@@ -1,5 +1,5 @@
 # Introduction
-Wein2DAndroid is a collection of java classes to speed up the process of making a game in java for android. Its based of [Wein2D](https://www.github.com/devtaube/wein2d).
+Wein2DAndroid is a collection of java classes to speed up the process of making a game in java for android. Its code methods and classes are based on [Wein2D](https://www.github.com/devtaube/wein2d).
 
 ## Code Example
 This is an Example for a simple App using Wein2DAndroid.
