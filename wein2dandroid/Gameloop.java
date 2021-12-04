@@ -35,7 +35,6 @@ class Gameloop extends Thread
                 app.postInvalidate();
             }
             // calculate amount of sleep
-            frameTime = System.currentTimeMillis() - frameStartTime;
             waitTime = 1000 / fps - frameTime;
             // sleep
             try

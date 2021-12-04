@@ -108,24 +108,24 @@ public class App extends SurfaceView implements SurfaceHolder.Callback {
         gameloop.fps = fps;
     }
     // Getters ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public int getSizeX()
+    public int getWidth()
     {
         return screenWidth;
     }
-    public int getSizeY()
+    public int getHeight()
     {
         return screenHeight;
     }
     // Input ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public int getTouchX()
+    public int getMouseX()
     {
         return touchX;
     }
-    public int getTouchY()
+    public int getMouseY()
     {
         return touchY;
     }
-    public boolean getTouching()
+    public boolean getMouseL()
     {
         return touching;
     }
