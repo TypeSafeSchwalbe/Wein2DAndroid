@@ -47,7 +47,7 @@ public class TestApp implements Application // implements Application to be usab
     public void onFrame() // gets called once per frame
     {
         x += 3; // move the ball
-        if(app.getTouching() || x > app.getSizeX()) // move the ball back if we touch the screen or the ball flies offscreen
+        if(app.getMouseL() || x > app.getWidth()) // move the ball back if we touch the screen or the ball flies offscreen
         {
             x = -150;
         }
@@ -74,11 +74,11 @@ Methods:
 - Setters
     - void setFPS(int fps) >> changes the gameloop's targeted FPS
 - Getters
-    - int getSizeX() >> returns the viewport's width
-    - int getSizeY() >> returns the viewport's height
-    - boolean getTouching() >> returns if the screen is being touched
-    - int getTouchX() >> returns the position of the latest touch on the x axis.
-    - int getTouchY() >> returns the position of the latest touch on the y axis.
+    - int getWidth() >> returns the viewport's width
+    - int getHeight() >> returns the viewport's height
+    - boolean getMouseL() >> returns if the screen is being touched
+    - int getMouseX() >> returns the position of the latest touch on the x axis.
+    - int getMouseY() >> returns the position of the latest touch on the y axis.
 - Drawing stuff on screen
     - void fill(int colorR, int colorG, int colorB) >> fills the screen with the specified color
     - void drawRect(int posX, int posY, int sizeX, int sizeY, int colorR, int colorG, int colorB) >> draws a rectangle on screen
