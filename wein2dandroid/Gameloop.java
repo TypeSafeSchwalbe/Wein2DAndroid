@@ -37,12 +37,12 @@ class Gameloop extends Thread
             // calculate amount of sleep
             waitTime = 1000 / fps - frameTime;
             // sleep
-            try
+            if(waitTime > 0)
             {
-                this.sleep(waitTime);
+                try {
+                    this.sleep(waitTime);
+                } catch (Exception e) {}
             }
-            catch (Exception e)
-            {}
         }
     }
 }
