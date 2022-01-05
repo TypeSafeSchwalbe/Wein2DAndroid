@@ -6,9 +6,9 @@ This is an Example for a simple App using Wein2DAndroid.
 
 MainActivity.java (the main activity that's defined in the AndroidManifest.xml):
 ```java
-package de.devtaube.wein2dandroidexample;
+package devtaube.wein2dandroidexample;
 
-import wein2dandroid.*;
+import devtaube.wein2dandroid.App;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -32,9 +32,9 @@ public class MainActivity extends Activity
 
 TestApp.java:
 ```java
-package de.devtaube.wein2dandroidexample;
+package devtaube.wein2dandroidexample;
 
-import wein2dandroid.*;
+import devtaube.wein2dandroid.*;
 
 public class TestApp implements Application // implements Application to be usable by wein2dandroid
 {
@@ -47,12 +47,10 @@ public class TestApp implements Application // implements Application to be usab
     public void onFrame() // gets called once per frame
     {
         x += 3; // move the ball
-        if(app.getMouseL() || x > app.getWidth()) // move the ball back if we touch the screen or the ball flies offscreen
-        {
+        if(app.getMouseL() || x > app.width) // move the ball back if we touch the screen or the ball flies offscreen
             x = -150;
-        }
         app.fill(31, 31, 31); // fill the screen with gray
-        app.drawOval(x, (app.getSizeY() - 150) / 2, 150, 150, 125, 125, 255); // draw the ball
+        app.drawOval(x, (app.height - 150) / 2, 150, 150, 125, 125, 255); // draw the ball
     }
 }
 ```
@@ -104,8 +102,8 @@ Methods:
    - void fill(int colorA, int colorR, int colorG, int colorB) >> fill window with color (with alpha)
 
 Global Variables:
-    - int width >> stores the width of the screen
-    - int height >> stores the height of the screen
+    - int width >> stores the width of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETWIDTH()!]
+    - int height >> stores the height of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETHEIGHT()!]
 
 ## Sprite
 Constructor:
