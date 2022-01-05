@@ -102,7 +102,7 @@ Methods:
    - void fill(int colorA, int colorR, int colorG, int colorB) >> fill window with color (with alpha)
 
 Global Variables:
-    - int width >> stores the width of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETWIDTH()!]
+    - int width >> stores the width of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETWIDTH()!]   
     - int height >> stores the height of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETHEIGHT()!]
 
 ## Sprite
