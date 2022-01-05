@@ -5,55 +5,11 @@ Wein2DAndroid is a collection of java classes to speed up the process of making 
 This is an Example for a simple App using Wein2DAndroid.
 
 MainActivity.java (the main activity that's defined in the AndroidManifest.xml):
-```java
-package devtaube.wein2dandroidexample;
+![MainActivity.java](https://github.com/devtaube/wein2dandroid/blob/main/markdown_images/mainactivityclass.png?raw=true)
 
-import devtaube.wein2dandroid.App;
+TestApp.java (actual code for the game):
+![MainActivity.java](https://github.com/devtaube/wein2dandroid/blob/main/markdown_images/testgameclass.png?raw=true)
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-
-public class MainActivity extends Activity
-{
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        // call superclass and set flags
-        super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // set content view to instance of wein2dandroid.App and pass its constructor this as well as a new instance of the TestApp class (needs to implement Application)
-        this.setContentView(new App(this, new TestApp()));
-    }
-}
-```
-
-TestApp.java:
-```java
-package devtaube.wein2dandroidexample;
-
-import devtaube.wein2dandroid.*;
-
-public class TestApp implements Application // implements Application to be usable by wein2dandroid
-{
-    App app;
-    int x = 0;
-    public void onCreate(App app) // gets called when wein2dandroid is ready
-    {
-        this.app = app; // store the app object to use it later
-    }
-    public void onFrame() // gets called once per frame
-    {
-        x += 3; // move the ball
-        if(app.getMouseL() || x > app.width) // move the ball back if we touch the screen or the ball flies offscreen
-            x = -150;
-        app.fill(31, 31, 31); // fill the screen with gray
-        app.drawOval(x, (app.height - 150) / 2, 150, 150, 125, 125, 255); // draw the ball
-    }
-}
-```
 # Documentation
 This is a list of all features, classes and methods.
 
