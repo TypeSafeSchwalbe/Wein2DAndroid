@@ -10,6 +10,8 @@ MainActivity.java (the main activity that's defined in the AndroidManifest.xml):
 TestApp.java (actual code for the game):
 ![MainActivity.java](https://github.com/devtaube/wein2dandroid/blob/main/markdown_images/testgameclass.png?raw=true)
 
+The code is also located in "./devtaube/wein2dandroidexample".
+
 # Documentation
 This is a list of all features, classes and methods.
 
