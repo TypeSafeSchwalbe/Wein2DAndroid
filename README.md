@@ -7,7 +7,7 @@ Wein2DAndroid is a collection of java classes to speed up the process of making 
 - playing sounds   
 - simple methods for detecting collision   
 
-Its methods and classes are based on [Wein2D](https://www.github.com/devtaube/wein2d).   
+Its methods and classes are based on [Wein2D](https://www.github.com/devtaube/wein2d), a library for creating desktop applications in java.   
 
 ## Code Example
 This is an Example for a simple App using Wein2DAndroid.
