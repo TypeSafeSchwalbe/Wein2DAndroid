@@ -1,8 +1,7 @@
 # Introduction
-Wein2DAndroid is a collection of java classes to speed up the process of making a game in java for android. It supports / has:   
-- creating the game/program's window and managing it   
-- adding your own 'onFrame' method to these windows to get called every frame   
-- drawing simple shapes and images to these windows, including text   
+Wein2DAndroid is a collection of java classes to speed up the process of making a game in java for android. It supports / has:
+- 'onFrame'-method (Gameloop is done for you)
+- drawing simple shapes and images to the screen, including text   
 - getting mouse and keyboard input from your user   
 - playing sounds   
 - simple methods for detecting collision   
