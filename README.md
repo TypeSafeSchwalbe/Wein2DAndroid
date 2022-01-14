@@ -101,3 +101,22 @@ Methods:
  - static boolean rectInsideRect(int rect1PosX, int rect1PosY, int rect1SizeX, int rect1SizeY, int rect2PosX, int rect2PosY, int rect2SizeX, int rect2SizeY)
      - returns 'false' if rectangle isn't inside specified rectangle
      - returns 'true' if rectangle is inside specified rectangle
+
+## Noise
+Constructors:  
+
+Noise()
+-> creates a new noise object
+
+Methods:
+- void generateValues(int noiseType, int sizeX, int sizeY) -> calculates a map of noise with the given size (double[][]-array)
+- void generateValues(int noiseType, int sizeX, int sizeY, double noiseMultiplier) -> calculates a map of noise with the given size (double[][]-array)
+  - noiseType can be:
+    - Noise.RANDOM
+      - generates completely random noise
+    - Noise.SMOOTH
+      - generates smooth noise
+  - noiseMultiplier: the higher the value, the less the values are going to change (1 is default)
+- double getNoiseValue(int x, int y) -> returns the value on the generated map at the given position
+- double[][] getNoiseMap() -> returns the entire generated map as a double[][]-array
+
