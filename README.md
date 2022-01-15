@@ -30,22 +30,16 @@ Methods:
  - void onFrame() >> gets called once per frame by wein2dandroid
 
 ## App
-Constructor:
+Constructor:  
 App(Android.content.Context context, wein2dandroid.Application application)
 
 Methods:
 - Setters
     - void setFPS(int fps) >> changes the gameloop's targeted FPS
 - Getters
-    - int getWidth() >> returns the viewport's width
-    - int getHeight() >> returns the viewport's height
     - boolean getMouseL() >> returns if the screen is being touched
     - int getMouseX() >> returns the position of the latest touch on the x axis.
     - int getMouseY() >> returns the position of the latest touch on the y axis.
-- Drawing stuff on screen
-    - void addGameloop(Gameloop gameloop) >> add an object to the window that implements the "Gameloop" interface
-   - void startGameloop() >> starts the gameloop if a Gameloop-object is added
-   - void setFPS(int fps) >> configures the gameloop to target the passed fps if a Gameloop-object is added
 - Drawing stuff on screen
    - void drawRect(int posX, int posY, int sizeX, int sizeY, int colorR, int colorG, int colorB) >> draw rectangle
    - void drawRect(int posX, int posY, int sizeX, int sizeY, int colorA, int colorR, int colorG, int colorB) >> draw rectangle (with alpha)
@@ -60,17 +54,17 @@ Methods:
    - void drawText(String content, int posX, int posY, int fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text
    - void drawText(String content, int posX, int posY, int fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with alpha)
    - void drawText(String content, int posX, int posY, String positioning, int fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text (with positioning)
-        - positioning may be: "LEFT", "CENTER", "RIGHT"
+        - positioning may be: TextPositioning.LEFT, TextPositioning.CENTER, TextPositioning.RIGHT
    - void drawText(String content, int posX, int posY, String positioning, int fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with positioning, with alpha)
-        - positioning may be: "LEFT", "CENTER", "RIGHT"
+        - positioning may be: TextPositioning.LEFT, TextPositioning.CENTER, TextPositioning.RIGHT
    - void fill(int colorR, int colorG, int colorB) >> fill window with color
    - void fill(int colorA, int colorR, int colorG, int colorB) >> fill window with color (with alpha)
    - void drawLine(int posX, int posY, int endX, int endY, int width, int colorR, int colorG, int colorB) >> draws a line on screen
    - void drawLine(int posX, int posY, int endX, int endY, int width, int colorA, int colorR, int colorG, int colorB) >> draws a line on screen with alpha
 
-Global Variables:   
-    - int width >> stores the width of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETWIDTH()!]   
-    - int height >> stores the height of the screen [DIFFERENT TO WEIN2D: WEIN2D USES WINDOW.GETHEIGHT()!]
+Variables:
+- int width >> stores the width of the screen 
+- int height >> stores the height of the screen
 
 ## Sprite
 Constructor:
