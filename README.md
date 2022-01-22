@@ -39,7 +39,7 @@ public class MainActivity extends Activity
 }
 ```
 
-TestApp.java (actual code for the game):
+TestApp.java (actual code for the app):
 ```java
 package devtaube.wein2dandroidexample;
 
