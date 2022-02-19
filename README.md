@@ -2,7 +2,7 @@
 Wein2DAndroid is a collection of java classes to speed up the process of making a game in java for android. It supports / has:
 - 'onFrame'-method (Gameloop is done for you)
 - drawing simple shapes and images to the screen, including text   
-- getting mouse and keyboard input from your user   
+- getting touch input from your user   
 - playing sounds   
 - simple methods for detecting collision   
 
@@ -43,67 +43,79 @@ public class ExampleProgram extends Wein2DApplication { // extend Application
 # Documentation
 This is a list of all features, classes and methods.
 
-## Application
--> interface
+## Wein2DApplication (abstract class)
+
+Abstract Methods:
+- abstract void onCreate() >> gets called on creation
+- abstract void onFrame() >> gets called once per frame
 
 Methods:
- - void onCreate(wein2dandroid.App app) >> gets called by wein2dandroid when the constructor for the app object has finished
- - void onFrame() >> gets called once per frame by wein2dandroid
-
-## App
-Constructor:  
-App(Android.content.Context context, wein2dandroid.Application application)
-
-Methods:
-- Setters
-    - void setFPS(int fps) >> changes the gameloop's targeted FPS
 - Getters
-    - boolean getMouseL() >> returns if the screen is being touched
-    - int getMouseX() >> returns the position of the latest touch on the x axis.
-    - int getMouseY() >> returns the position of the latest touch on the y axis.
-- Drawing stuff on screen
-   - void drawRect(int posX, int posY, int sizeX, int sizeY, int colorR, int colorG, int colorB) >> draw rectangle
-   - void drawRect(int posX, int posY, int sizeX, int sizeY, int colorA, int colorR, int colorG, int colorB) >> draw rectangle (with alpha)
-   - void drawOval(int posX, int posY, int sizeX, int sizeY, int colorR, int colorG, int colorB) >> draw oval
-   - void drawOval(int posX, int posY, int sizeX, int sizeY, int colorA, int colorR, int colorG, int colorB) >> draw oval (with alpha)
-   - void drawSprite(Sprite sprite, int posX, int posY) >> draw sprite
-   - void drawSprite(Sprite sprite, int posX, int posY, int colorA) >> draw sprite (with alpha)
-   - void drawSprite(Sprite sprite, int posX, int posY, int sizeX, int sizeY) >> draw sprite (specified size)
-   - void drawSprite(Sprite sprite, int posX, int posY, int sizeX, int sizeY, int colorA) >> draw sprite (specified size, with alpha)
-   - void drawSprite(Sprite sprite, int posX, int posY, int sizeX, int sizeY, int srcPosX, int srcPosY, int srcSizeX, int srcSizeY) >> draw sprite (specified size and source size)
-   - void drawSprite(Sprite sprite, int posX, int posY, int sizeX, int sizeY, int srcPosX, int srcPosY, int srcSizeX, int srcSizeY, int colorA) >> draw sprite (specified size and source size, with alpha)
-   - void drawText(String content, int posX, int posY, int fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text
-   - void drawText(String content, int posX, int posY, int fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with alpha)
-   - void drawText(String content, int posX, int posY, int positioning, int fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text (with positioning)
+   - int getFPS() >> returns the number of frames the gameloop did in the last second (value refreshes once per second), returns -1 if no gameloop object configured, returns 0 if no full second passed yet
+- Setters
+   - final void setTargetedFPS(int fps) >> set the amount of frames per second the gameloop targets (a value below 1 or above 1000 means unlimited) (60 by default)
+- Drawing stuff
+   - final void drawRect(double posX, double posY, double sizeX, double sizeY, int colorR, int colorG, int colorB) >> draw rectangle
+   - final void drawRect(double posX, double posY, double sizeX, double sizeY, int colorA, int colorR, int colorG, int colorB) >> draw rectangle (with alpha)
+   - final void drawOval(double posX, double posY, double sizeX, double sizeY, int colorR, int colorG, int colorB) >> draw oval
+   - final void drawOval(double posX, double posY, double sizeX, double sizeY, int colorA, int colorR, int colorG, int colorB) >> draw oval (with alpha)
+   - final void drawSprite(Sprite sprite, double posX, double posY) >> draw sprite
+   - final void drawSprite(Sprite sprite, double posX, double posY, int colorA) >> draw sprite (with alpha)
+   - final void drawSprite(Sprite sprite, double posX, double posY, double sizeX, double sizeY) >> draw sprite (specified size)
+   - final void drawSprite(Sprite sprite, double posX, double posY, double sizeX, double sizeY, int colorA) >> draw sprite (specified size, with alpha)
+   - final void drawSprite(Sprite sprite, double posX, double posY, double sizeX, double sizeY, int srcPosX, int srcPosY, int srcSizeX, int srcSizeY) >> draw sprite (specified size and source size)
+   - final void drawSprite(Sprite sprite, double posX, double posY, double sizeX, double sizeY, int srcPosX, int srcPosY, int srcSizeX, int srcSizeY, int colorA) >> draw sprite (specified size and source size, with alpha)
+   - final void drawText(String content, double posX, double posY, double fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text
+   - final void drawText(String content, double posX, double posY, double fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with alpha)
+   - final void drawText(String content, double posX, double posY, int positioning, double fontSize, String fontFamily, int colorR, int colorG, int colorB) >> draw text (with positioning)
         - positioning may be: TextPositioning.LEFT, TextPositioning.CENTER, TextPositioning.RIGHT
-   - void drawText(String content, int posX, int posY, int positioning, int fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with positioning, with alpha)
+   - final void drawText(String content, double posX, double posY, int positioning, double fontSize, String fontFamily, int colorA, int colorR, int colorG, int colorB) >> draw text (with positioning, with alpha)
         - positioning may be: TextPositioning.LEFT, TextPositioning.CENTER, TextPositioning.RIGHT
-   - void fill(int colorR, int colorG, int colorB) >> fill window with color
-   - void fill(int colorA, int colorR, int colorG, int colorB) >> fill window with color (with alpha)
-   - void drawLine(int posX, int posY, int endX, int endY, int width, int colorR, int colorG, int colorB) >> draws a line on screen
-   - void drawLine(int posX, int posY, int endX, int endY, int width, int colorA, int colorR, int colorG, int colorB) >> draws a line on screen with alpha
+   - final void fill(int colorR, int colorG, int colorB) >> fill window with color
+   - final void fill(int colorA, int colorR, int colorG, int colorB) >> fill window with color (with alpha)
+   - final void drawLine(double posX, double posY, double endX, double endY, double width, int colorR, int colorG, int colorB) >> draws a line on screen
+   - final void drawLine(double posX, double posY, double endX, double endY, double width, int colorA, int colorR, int colorG, int colorB) >> draws a line on screen with alpha
+- Input
+   - final int getMouseX() >> returns the mouse's position on the x-axis
+   - final int getMouseY() >> returns the mouse's position on the y-axis
+   - final boolean getMouseL() >> returns if the mouse's left button is being pressed
 
-Variables:
-- int width >> stores the width of the screen 
-- int height >> stores the height of the screen
+Variables:  
+- int width >> stores the current width of the window
+- int height >> stores the current height of the window
+- int deltaTime >> time in seconds since last frame
 
 ## Sprite
-Constructor:
-Sprite(int resource (for example 'R.drawable.test_image'))
--> creates and loads the Sprite from the given Path
+Constructors:  
 
-## Sound
-Constructor:
-Sound(int resource (for example 'R.raw.test_sound'))
--> creates and loads the Sound from the given Path
+Sprite(String filePath)  
+-> creates and loads the Sprite from the given path  
+Sprite(java.io.File file)  
+-> creates and loads the sprite from the given file object  
+Sprite(java.awt.Image image)  
+-> creates the sprite from the given image object  
 
 Methods:
- - void play() >> plays the sound
- - void stop() >> stops playback of the sound
+ - final int getWidth() >> returns the sprite's width
+ - final int getHeight() >> returns the sprite's height
+
+## Sound
+Constructors:  
+
+Sound(String filePath)  
+-> creates and loads the sound from the given path  
+Sound(java.io.File file)  
+-> creates and loads the sound from the given file object  
+Sound(javax.sound.sampled.Clip clip)  
+-> creates the sound from the given clip object  
+
+Methods:
+ - final void play() >> plays the sound  
+ - final void stop() >> stops playback of the sound  
 
 ## Collision
 Methods:
- - static boolean lineTouchingRect(int lineX, int lineY, int lineLength, int rectPosX, int rectPosY, int rectSizeX, int rectSizeY)
+ - static boolean lineTouchingRect(int lineX, int lineY, int lineLengthOnXAxis, int rectPosX, int rectPosY, int rectSizeX, int rectSizeY)
      - returns 'false' if line doesn't touch specified rectangle
      - returns 'true' if line touches specified rectangle
  - static boolean rectTouchingRect(int rect1PosX, int rect1PosY, int rect1SizeX, int rect1SizeY, int rect2PosX, int rect2PosY, int rect2SizeX, int rect2SizeY)
@@ -112,10 +124,14 @@ Methods:
  - static boolean pointInsideRect(int pointX, int pointY, int rectPosX, int rectPosY, int rectSizeX, int rectSizeY)
      - returns 'false' if point isn't inside specified rectangle
      - returns 'true' if point is inside specified rectangle
- - static boolean lineInsideRect(int lineX, int lineY, int lineLength, int rectPosX, int rectPosY, int rectSizeX, int rectSizeY)
+ - static boolean lineInsideRect(int lineX, int lineY, int lineLengthOnXAxis, int rectPosX, int rectPosY, int rectSizeX, int rectSizeY)
      - returns 'false' if line isn't inside specified rectangle
      - returns 'true' if line is inside specified rectangle
  - static boolean rectInsideRect(int rect1PosX, int rect1PosY, int rect1SizeX, int rect1SizeY, int rect2PosX, int rect2PosY, int rect2SizeX, int rect2SizeY)
      - returns 'false' if rectangle isn't inside specified rectangle
      - returns 'true' if rectangle is inside specified rectangle
 
+## FileIOMethods
+Methods:
+ - static void serializeObject(Object object, String filePath) >> stores the given object as a file at the given location (Warning: Directories aren't supported!)
+ - static Object deserializeObject(String filePath) >> reads an object from the given location and returns it (Warning: Directories aren't supported!)
