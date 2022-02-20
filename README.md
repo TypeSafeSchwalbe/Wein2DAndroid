@@ -88,12 +88,8 @@ Variables:
 ## Sprite
 Constructors:  
 
-Sprite(String filePath)  
--> creates and loads the Sprite from the given path  
-Sprite(java.io.File file)  
--> creates and loads the sprite from the given file object  
-Sprite(java.awt.Image image)  
--> creates the sprite from the given image object  
+Sprite(ANDROID RESOURCE)  
+-> creates and loads the Sprite from the given resource  
 
 Methods:
  - final int getWidth() >> returns the sprite's width
@@ -102,12 +98,8 @@ Methods:
 ## Sound
 Constructors:  
 
-Sound(String filePath)  
--> creates and loads the sound from the given path  
-Sound(java.io.File file)  
--> creates and loads the sound from the given file object  
-Sound(javax.sound.sampled.Clip clip)  
--> creates the sound from the given clip object  
+Sound(ANDROID RESOURCE)  
+-> creates and loads the sound from the given resource  
 
 Methods:
  - final void play() >> plays the sound  
