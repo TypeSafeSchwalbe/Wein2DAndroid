@@ -47,6 +47,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         drawPaint = new Paint();
         imageAlphaPaint = new Paint();
+        imageAlphaPaint.setAntiAlias(false);
+        imageAlphaPaint.setFilterBitmap(false);
         textPaint = new Paint();
         drawRectRect = new Rect();
         drawBitmapSrcRect = new Rect();
