@@ -18,7 +18,6 @@ public class FileIOMethods
 
             FileOutputStream fileOutputStream = wein2DApplication.openFileOutput(filename, Activity.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            System.out.println(objectOutputStream.toString());
             objectOutputStream.writeObject(object);
             fileOutputStream.getFD().sync();
             objectOutputStream.close();
