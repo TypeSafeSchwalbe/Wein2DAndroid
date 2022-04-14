@@ -28,8 +28,6 @@ package devtaube.wein2dandroid;
 
 import android.app.Activity;
 import android.graphics.Canvas;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -46,7 +44,7 @@ public abstract class Wein2DApplication extends Activity implements RenderCalls
     public int height;
     public double deltaTime;
 
-    private int fps;
+    private int fps = 50;
 
     private boolean surfaceCreated = false;
 
