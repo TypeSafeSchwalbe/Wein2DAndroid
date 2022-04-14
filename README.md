@@ -34,7 +34,7 @@ public class ExampleProgram extends Wein2DApplication
         if(getMouseL()) cubeVelocity = CUBE_JUMP_VELOCITY;
 
         // move the cube up and down according to it's velocity
-        cubeHeight += cubeVelocity * deltaTime;
+        cubeHeight += cubeVelocity * this.deltaTime;
         // if the cube is not on the ground remove some of the cube's velocity (gravitation)
         if(cubeHeight > 0.0) cubeVelocity -= CUBE_GRAVITATION * this.deltaTime;
 
