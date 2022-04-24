@@ -40,6 +40,8 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 
+import java.util.HashMap;
+
 class GameView extends SurfaceView implements SurfaceHolder.Callback
 {
 
@@ -54,6 +56,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     boolean touching;
     int touchX = 0;
     int touchY = 0;
+
+    HashMap<Integer, float[]> fingerPositions = new HashMap<>();
 
     private boolean keyboardShown;
 
@@ -125,6 +129,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+        // default (mouse)
         touchX = (int) event.getX();
         touchY = (int) event.getY();
 
@@ -138,6 +143,34 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
             case MotionEvent.ACTION_UP:
                 touching = false;
                 break;
+        }
+
+        // finger positions (for multiple fingers at once support)
+        int fingerID = event.getPointerId(event.getActionIndex());
+        switch(event.getActionMasked())
+        {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_POINTER_DOWN:
+            {
+                fingerPositions.put(fingerID, new float[] { event.getX(event.getActionIndex()), event.getY(event.getActionIndex()) });
+            }
+            break;
+
+            case MotionEvent.ACTION_MOVE:
+            {
+                for(int pointerIndex = 0; pointerIndex < event.getPointerCount(); pointerIndex++){
+                    fingerPositions.put(event.getPointerId(pointerIndex), new float[] { event.getX(pointerIndex), event.getY(pointerIndex) });
+                }
+            }
+            break;
+
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP:
+            case MotionEvent.ACTION_CANCEL:
+            {
+                fingerPositions.remove(fingerID);
+            }
+            break;
         }
 
         return true;

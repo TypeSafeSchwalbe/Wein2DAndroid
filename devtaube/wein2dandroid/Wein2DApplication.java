@@ -78,6 +78,10 @@ public abstract class Wein2DApplication extends Activity implements RenderCalls
 
     public final boolean getMouseL() { return gameView.touching; }
 
+
+    public final float[][] getFingerPositions() { return gameView.fingerPositions.values().toArray(new float[0][0]); }
+
+
     public final int getFPS()
     {
         if(gameloop != null)
