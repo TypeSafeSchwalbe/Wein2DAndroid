@@ -47,15 +47,14 @@ public class ExampleProgram extends Wein2DApplication
         // render calls //////////////////////////////////////////////////
 
         // fill the screen with blue
-        fill(255, 11, 138, 143);
+        fill(11, 138, 143);
 
         // draw the cube
-        drawRect(
-                (this.width - CUBE_SIZE) / 2.0, // draw at the center of the screen (x axis)
-                this.height - CUBE_SIZE - cubeHeight, // draw at the cube's height (y axis)
-                CUBE_SIZE, CUBE_SIZE, // draw the cube with it's width and height
-                255, 255, 255, 255 // draw the cube white
-        );
+        drawRectangle()
+                .setPosition((this.width - CUBE_SIZE) / 2.0, this.height - CUBE_SIZE - cubeHeight) // draw at the center of the screen (x axis), draw at the cube's height (y axis)
+                .setSize(CUBE_SIZE, CUBE_SIZE) // draw the cube with it's width and height
+                .setColor(255, 255, 255, 255)
+                .draw(); // draw!
     }
 
 }
