@@ -29,7 +29,9 @@ package devtaube.wein2dandroid;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.text.InputType;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -39,6 +41,9 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,8 +64,6 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     int touchY = 0;
 
     HashMap<Integer, float[]> fingerPositions = new HashMap<>();
-
-    private boolean keyboardShown;
 
 
     public GameView(Wein2DApplication wein2DApplication)
@@ -83,17 +86,14 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     {
         InputMethodManager inputManager = (InputMethodManager) wein2DApplication.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        if(showKeyboard && !keyboardShown)
+        if(showKeyboard && !inputManager.hideSoftInputFromWindow(getWindowToken(), 0))
         {
             requestFocus();
             inputManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-            keyboardShown = true;
         }
-
-        if(!showKeyboard && keyboardShown)
+        if(!showKeyboard)
         {
-            inputManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-            keyboardShown = false;
+            inputManager.hideSoftInputFromWindow(getWindowToken(), 0);
         }
     }
 
@@ -101,6 +101,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public InputConnection onCreateInputConnection(EditorInfo outAttrs)
     {
+        outAttrs.imeOptions = EditorInfo.IME_FLAG_NO_EXTRACT_UI;
         outAttrs.inputType = InputType.TYPE_CLASS_TEXT;
         return keyInputConnection;
     }
@@ -111,8 +112,6 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback
     {
         setWillNotDraw(false);
         setVisibility(View.VISIBLE);
-
-        keyboardShown = false;
 
         wein2DApplication.surfaceCreated();
     }
